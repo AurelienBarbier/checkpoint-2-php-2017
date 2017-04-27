@@ -1,1 +1,26 @@
-ssHello World!
+{% extends 'CommitStripBundle::base.html.twig' %}
+
+
+{% block body%}
+
+<div class="uk-child-width-1-4@m" uk-grid>
+	{% for card in cards %}
+		<div>
+			<div class="uk-card uk-card-default">
+				<div class="uk-card-media-top">
+					<a href="{{ path('commit_strip_show', {'id' : card.id}) }}">
+						<img src="{{ card.picture }}" alt="">
+					</a>
+				</div>
+				<div class="uk-card-body">
+					<a href="{{ path('commit_strip_show', {'id' : card.id}) }}">
+						<h3 class="uk-card-title">Card #{{ card.id }}</h3>
+					</a>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+</div>
+
+{% endblock %}

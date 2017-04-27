@@ -1,0 +1,31 @@
+{% extends 'CommitStripBundle::base.html.twig' %}
+
+
+{% block body%}
+<div class="uk-container uk-text-center">
+	<div class="uk-inline">
+		<img src="{{ card.picture }}" alt="">
+		<div class="uk-overlay uk-light uk-position-bottom">
+			<p>Card #{{ card.id }}</p>
+		</div>
+	</div>
+	<ul class="uk-pagination">
+		{% if prev_card %}
+			<li>
+				<a href="{{ path('commit_strip_show', {id:prev_card.id})}}">
+					<span class="uk-margin-small-right" uk-pagination-previous></span>
+					Previous
+				</a>
+			</li>
+		{% endif %}
+		{% if next_card %}
+			<li class="uk-margin-auto-left">
+				<a href="{{ path('commit_strip_show', {id:next_card.id})}}">
+					Next 
+					<span class="uk-margin-small-left" uk-pagination-next></span>
+				</a>
+			</li>
+		{% endif %}
+	</ul>
+</div>
+{% endblock %}

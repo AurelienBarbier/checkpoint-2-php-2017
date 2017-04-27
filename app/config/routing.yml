@@ -1,6 +1,6 @@
 commit_strip:
     resource: "@CommitStripBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /story
 
 subject:
     resource: "@SubjectBundle/Controller/"

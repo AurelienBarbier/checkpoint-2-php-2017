@@ -2,6 +2,8 @@
 
 namespace CommitStripBundle\Repository;
 
+//use Doctrine\ORM\Tools\Pagination\Paginator;
+
 /**
  * CardRepository
  *
@@ -10,4 +12,28 @@ namespace CommitStripBundle\Repository;
  */
 class CardRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function getPrev($id){
+
+		$qb = $this->createQueryBuilder('c');
+
+		$qb->where('c.id < :patate')
+		->setParameter('patate', $id)
+		->setMaxResults( 1);
+
+		return $qb
+		->getQuery()
+		->getOneOrNullResult();
+	}
+	public function getNext($id){
+
+		$qb = $this->createQueryBuilder('c');
+
+		$qb->where('c.id > :id')
+		->setParameter('id', $id)
+		->setMaxResults( 1);
+
+		return $qb
+		->getQuery()
+		->getOneOrNullResult();
+	}
 }
