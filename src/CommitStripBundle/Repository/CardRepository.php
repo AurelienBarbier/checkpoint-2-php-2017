@@ -16,9 +16,9 @@ class CardRepository extends \Doctrine\ORM\EntityRepository
 
 		$qb = $this->createQueryBuilder('c');
 
-		$qb->where('c.id < :patate')
+		$qb->where('c.id < :id')
 		->orderBy('c.id', 'DESC')
-		->setParameter('patate', $id)
+		->setParameter('id', $id)
 		->setMaxResults( 1);
 
 		return $qb
