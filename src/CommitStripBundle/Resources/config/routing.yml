@@ -1,6 +1,6 @@
-#commit_strip_homepage:
-#    path:     /commitstrip
-#    defaults: { _controller: CommitStripBundle:Default:index }
+commit_strip_homepage:
+    path:     /
+    defaults: { _controller: CommitStripBundle:Default:index }
 commit_strip_show:
     path:     /{id}
     defaults:

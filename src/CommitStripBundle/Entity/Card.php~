@@ -99,28 +99,5 @@ class Card
     {
         return $this->nbcard;
     }
-
-    /**
-     * Set story
-     *
-     * @param \CommitStripBundle\Entity\Story $story
-     *
-     * @return Card
-     */
-    public function setStory(\CommitStripBundle\Entity\Story $story = null)
-    {
-        $this->story = $story;
-
-        return $this;
-    }
-
-    /**
-     * Get story
-     *
-     * @return \CommitStripBundle\Entity\Story
-     */
-    public function getStory()
-    {
-        return $this->story;
-    }
 }
+
