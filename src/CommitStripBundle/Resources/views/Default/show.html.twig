@@ -11,6 +11,7 @@
 	</div>
 	<ul class="uk-pagination">
 		{% if prev_card %}
+		{{ dump(prev_card)}}
 			<li>
 				<a href="{{ path('commit_strip_show', {id:prev_card.id})}}">
 					<span class="uk-margin-small-right" uk-pagination-previous></span>
@@ -19,6 +20,7 @@
 			</li>
 		{% endif %}
 		{% if next_card %}
+			{{ dump(next_card)}}
 			<li class="uk-margin-auto-left">
 				<a href="{{ path('commit_strip_show', {id:next_card.id})}}">
 					Next 
