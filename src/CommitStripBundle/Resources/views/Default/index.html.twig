@@ -4,7 +4,7 @@
 {% block body%}
 
 <div class="uk-child-width-1-4@m" uk-grid>
-	{% for card in cards %}
+	{% for story in stories %}
 		<div>
 			<div class="uk-card uk-card-default">
 				<div class="uk-card-media-top">
@@ -14,7 +14,7 @@
 				</div>
 				<div class="uk-card-body">
 					<a href="{{ path('commit_strip_show', {'id' : card.id}) }}">
-						<h3 class="uk-card-title">Card #{{ card.id }}</h3>
+						<h3 class="uk-card-title">{{ story.titre }}</h3>
 					</a>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
 				</div>

@@ -6,10 +6,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {    
-    public function showAction($id)
-    {
-    
-        return $this->render('CommitStripBundle:Default:show.html.twig');
+    public function indexAction()
+    {    
+        $em = $this->getDoctrine()->getManager();
+        $stories = $em->getRepository('CommitStripBundle:Story')->findAll();
+
+        $card = $em->getRepository('CommitStripBundle:Card')->getNext(0);
+
+
+        return $this->render('CommitStripBundle:Default:index.html.twig', [
+            'stories' => $stories,
+            'card'  => $card,
+            ]);
     }
     
     public function showAction($id)
