@@ -3,6 +3,7 @@
 namespace CommitStripBundle\Repository;
 
 //use Doctrine\ORM\Tools\Pagination\Paginator;
+use CommitStripBundle\Entity\Card;
 
 /**
  * CardRepository
@@ -12,27 +13,32 @@ namespace CommitStripBundle\Repository;
  */
 class CardRepository extends \Doctrine\ORM\EntityRepository
 {
-	public function getPrev($id){
+	public function getPrev(Card $card){
 
 		$qb = $this->createQueryBuilder('c');
 
-		$qb->where('c.id < :id')
-		->orderBy('c.id', 'DESC')
-		->setParameter('id', $id)
-		->setMaxResults( 1);
+		$qb->where('c.nbcard < :nbcard')
+		->andWhere('c.story = :story')
+		->orderBy('c.nbcard', 'DESC')
+		->setParameter('nbcard', $card->getNbcard())
+		->setParameter('story', $card->getStory())
+		->setMaxResults(1);
 
 		return $qb
 		->getQuery()
 		->getOneOrNullResult();
 	}
-	public function getNext($id){
+
+	public function getNext(Card $card){
 
 		$qb = $this->createQueryBuilder('c');
 
-		$qb->where('c.id > :id')
-		->orderBy('c.id', 'ASC')
-		->setParameter('id', $id)
-		->setMaxResults( 1);
+		$qb->where('c.nbcard > :nbcard')
+		->andWhere('c.story = :story')
+		->orderBy('c.nbcard', 'ASC')
+		->setParameter('nbcard', $card->getNbcard())
+		->setParameter('story', $card->getStory())
+		->setMaxResults(1);
 
 		return $qb
 		->getQuery()

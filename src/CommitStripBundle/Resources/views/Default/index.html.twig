@@ -3,24 +3,27 @@
 
 {% block body%}
 
-<div class="uk-child-width-1-4@m" uk-grid>
-	{% for story in stories %}
-		<div>
-			<div class="uk-card uk-card-default">
-				<div class="uk-card-media-top">
-					<a href="{{ path('commit_strip_show', {'id' : card.id}) }}">
-						<img src="{{ card.picture }}" alt="">
-					</a>
-				</div>
-				<div class="uk-card-body">
-					<a href="{{ path('commit_strip_show', {'id' : card.id}) }}">
-						<h3 class="uk-card-title">{{ story.titre }}</h3>
-					</a>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+<div class="uk-container uk-text-center">
+	<div class="uk-child-width-1-4@m" uk-grid>
+		{% for story in stories %}
+
+			<div class="uk-inline">
+				<div class="uk-card uk-card-default">
+					<div class="uk-card-media-top">
+						<a href="{{ path('commit_strip_show', {'id' : story.cards.first.id}) }}">
+							<img src="{{ story.cards.first.picture }}" alt="">
+						</a>
+					</div>
+					<div class="uk-card-body">
+						<a href="{{ path('commit_strip_show', {'id' : story.cards.first.id}) }}">
+							<h3 class="uk-card-title">{{ story.titre }}</h3>
+						</a>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+					</div>
 				</div>
 			</div>
-		</div>
-	{% endfor %}
+		{% endfor %}
+	</div>
 </div>
 
 {% endblock %}
